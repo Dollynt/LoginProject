@@ -74,7 +74,17 @@ class SecondActivity : AppCompatActivity() {
                 val gmmIntentUri = Uri.parse("geo:$latitude,$longitude?z=$zoomLevel")
                 val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
                 mapIntent.setPackage("com.google.android.apps.maps")
-                startActivity(mapIntent)
+
+                if (mapIntent.resolveActivity(packageManager) != null) {
+                    startActivity(mapIntent)
+                } else {
+                    Toast.makeText(
+                        this,
+                        "Your device does not have the compatible app for the feature",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
                 true
             }
             else -> super.onOptionsItemSelected(item)
