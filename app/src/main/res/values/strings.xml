@@ -8,4 +8,6 @@
     <string name="user">User:</string>
     <string name="option1">Option1</string>
     <string name="option2">Option2</string>
+    <string name="sub1">sub1</string>
+    <string name="sub2">sub2</string>
 </resources>
