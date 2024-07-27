@@ -59,7 +59,22 @@ class SecondActivity : AppCompatActivity() {
                 true
             }
             R.id.option2 -> {
-                Toast.makeText(this, "option2 was selected", Toast.LENGTH_SHORT).show()
+                val sharedText = "Testing text share option to other apps..."
+                val intent = Intent(Intent.ACTION_SEND)
+                intent.type = "text/plain"
+                intent.putExtra(Intent.EXTRA_TEXT, sharedText)
+                startActivity(Intent.createChooser(intent, "Share via..."))
+                true
+            }
+            R.id.option3 -> {
+                val latitude = -80554591
+                val longitude = -34.9539049
+                val zoomLevel = 17
+
+                val gmmIntentUri = Uri.parse("geo:$latitude,$longitude?z=$zoomLevel")
+                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                mapIntent.setPackage("com.google.android.apps.maps")
+                startActivity(mapIntent)
                 true
             }
             else -> super.onOptionsItemSelected(item)
