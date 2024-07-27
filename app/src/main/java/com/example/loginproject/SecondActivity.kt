@@ -2,11 +2,12 @@ package com.example.loginproject
 
 import android.app.AlertDialog
 import android.os.Bundle
-import androidx.activity.ComponentActivity
+import android.view.Menu
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import com.example.loginproject.databinding.ActivitySecondBinding
 
-class SecondActivity : ComponentActivity() {
+class SecondActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySecondBinding
     private val callback = object : OnBackPressedCallback(true) {
@@ -26,6 +27,11 @@ class SecondActivity : ComponentActivity() {
         binding.loggedIn.text = dateHour
 
         onBackPressedDispatcher.addCallback(this, callback)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_default, menu)
+        return true
     }
 
     private fun showExitConfirmationDialog() {
